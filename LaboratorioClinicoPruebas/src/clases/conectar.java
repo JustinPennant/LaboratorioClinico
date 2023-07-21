@@ -1,20 +1,20 @@
-//CLASE PARA CONECTARNOS A LA RED
-package conexion;
+//ESTA CLASE SERVIRÁ PARA CONECTAR APROPIADAMENTE CON LA BASE DE DATOS
+package clases;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class conect_server {
+public class conectar {
     
     private static Connection conn;
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String USER = "root";
-    private static final String PASSWORD = "12345";
-    private static final String URL = "jdbc:mysql://localhost:3306/labclinico?autoReconnect=true&useSSL=false";
+    private static final String PASSWORD = "";
+    private static final String URL = "jdbc:mysql://localhost:3306/labclinico?characterEncoding=UTF-8";
 
-    public conect_server() {
+    public conectar() {
         conn = null;
     }
     
@@ -23,8 +23,11 @@ public class conect_server {
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            if(conn != null){
+                JOptionPane.showMessageDialog(null, "Conexión Establecida");
+            }
         } catch (ClassNotFoundException | SQLException ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error al conectar con la base de datos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al realizar conexión: " + ex);
             System.exit(0);
         }
         return conn;
@@ -33,7 +36,8 @@ public class conect_server {
     //Este método permite desconectar de la base de datos
     public void desconectar(){
         try{
-          conn.close();  
+          conn.close();
+          JOptionPane.showMessageDialog(null, "Desconexión exitosa");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error al desconectar", JOptionPane.ERROR_MESSAGE);
         }

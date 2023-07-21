@@ -5,20 +5,16 @@
  */
 package proyectoclinicarisko;
 
+import com.mysql.jdbc.Connection;
 import conexion.conect_server;
-import java.sql.ResultSet;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author PC
  */
 public class DatosPaciente extends javax.swing.JPanel {
-    
-    private final String SQL_SELECT = "SELECT * FROM  TB_EXPEDIENTE";
-    private DefaultTableModel DT;
-    private ResultSet RS;
-            
+
+    conect_server con;
     /**
      * Creates new form DatosPaciente
      */
@@ -155,7 +151,7 @@ public class DatosPaciente extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -345,59 +341,10 @@ public class DatosPaciente extends javax.swing.JPanel {
         add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 140, 60));
     }// </editor-fold>//GEN-END:initComponents
 
-    private DefaultTableModel setTitulos(){
-        DT = new DefaultTableModel();
-        DT.addColumn("Expediente");
-        DT.addColumn("NombrePaciente");
-        DT.addColumn("Sexo");
-        DT.addColumn("Telefono");
-        DT.addColumn("NIT");
-        DT.addColumn("Direccion");
-        DT.addColumn("Referente");
-        DT.addColumn("Descuento");
-        DT.addColumn("CodigoAuxiliar");
-        
-        return DT;
-    }
-    
-    private void Listar(){
-        
-    }
-    
-    public DefaultTableModel getDatos(){
-        try{
-            setTitulos();
-            PS = conect_server.getConnection().prepareStatement(SQL_SELECT);
-            RS = PS.executeQuery();
-            Object[] fila = new Object [9];
-            while(RS.next()){
-                fila[0] = RS.getInt(1);
-                fila[1] = RS.getString(1);
-                fila[2] = RS.getString(1);
-                fila[3] = RS.getInt(1);
-                fila[4] = RS.getString(1);
-                fila[5] = RS.getString(1);
-                fila[6] = RS.getString(1);
-                fila[7] = RS.getString(1);
-                fila[8] = RS.getInt(1);
-                
-                DT.addRow(fila);
-            }
-            
-        }catch (Exception e) {
-            System.out.println("Error al listar los datos :" + e.getMessage());
-        }finally{
-            PS=NULL;
-            RS+NULL;
-            CN.close();
-        }
-        
-        return DT;
-    }
-    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        
+        con = new conect_server();
+        Connection reg = (Connection) con.getConnection();
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
