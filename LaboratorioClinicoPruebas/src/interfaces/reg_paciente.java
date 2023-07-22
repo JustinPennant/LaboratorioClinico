@@ -1,9 +1,124 @@
 
 package interfaces;
+import javax.swing.*;
+import java.awt.*;
+import java.sql.Connection;
+import interfaces.Paciente;
 
-public class reg_paciente extends javax.swing.JPanel {
+
+
+//CONFIGURACION DEL BOTON ANTERIOR Y SIGUIENTE
+/***********************************************************/
+public class reg_paciente  extends JFrame {
+    private PacienteManager pacienteManager;
+
+    // Componentes de la interfaz gráfica
+    private JTextField txt_buscar;
+    private JTextField txt_nombre;
+    private JComboBox<String> comb_sexo;
+    private JTextField txt_nacimiento;
+    private JTextField txt_telefono;
+    private JTextField txt_nit;
+    private JTextField txt_codaux;
+    private JComboBox<String> comb_tipomuestra;
+    private JTextField txt_direccion;
+    private JTextField txt_quienref;
+    private JButton jButton5;
+    private JButton jButton6;
 
     public reg_paciente() {
+          // Inicializa la conexión a la base de datos
+        Connection connection = obtenerConexionBD();
+
+        // Crea una instancia del PacienteManager pasando la conexión
+        pacienteManager = new PacienteManager(connection);
+        
+        // Configura los botones "Siguiente" y "Anterior" para manejar los eventos
+        jButton5.addActionListener(e -> siguientePaciente());
+        jButton6.addActionListener(e -> pacienteAnterior());
+        
+        // Muestra el primer paciente al iniciar
+        mostrarPacienteActual();
+    }
+        private void siguientePaciente() {
+        pacienteManager.siguientePaciente();
+        mostrarPacienteActual();
+    }
+
+    private void pacienteAnterior() {
+        pacienteManager.pacienteAnterior();
+        mostrarPacienteActual();
+    }
+
+    
+private void initComponents() {
+
+        // Configura el botón "Siguiente" para manejar el evento
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        // Configura el botón "Anterior" para manejar el evento
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+    }
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        pacienteManager.siguientePaciente();
+        mostrarPacienteActual();
+    }                                             
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        pacienteManager.pacienteAnterior();
+        mostrarPacienteActual();
+    }                                             
+
+    private void mostrarPacienteActual() {
+        Paciente paciente = pacienteManager.obtenerPacienteActual();
+        if (paciente != null) {
+            // Mostrar los datos en los cuadros de texto
+            txt_buscar.setText(String.valueOf(paciente.getExpediente()));
+            txt_nombre.setText(paciente.getNombre());
+            comb_sexo.setSelectedItem(paciente.getGenero());
+            txt_nacimiento.setText(paciente.getFechaNacimiento());
+            txt_telefono.setText(paciente.getTelefono());
+            txt_nit.setText(paciente.getNit());
+            txt_codaux.setText(paciente.getCodigoAuxiliar());
+            comb_tipomuestra.setSelectedItem(paciente.getTipoMuestra());
+            txt_direccion.setText(paciente.getDireccion());
+            txt_quienref.setText(paciente.getQuienRefiere());
+        }
+    }
+
+    // Método ficticio para obtener la conexión a la base de datos
+    private Connection obtenerConexionBD() {
+        // Aquí deberías implementar la lógica para obtener la conexión a la base de datos
+        // y devolverla como resultado. Este método es solo un ejemplo ficticio.
+        return null;
+    }
+
+    public static void main(String[] args) {
+        // Crea y muestra la interfaz gráfica
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new reg_paciente().setVisible(true);
+            }
+        });
+    }
+}
+/*****************************************************************************************/
+
+
+
+
+public class RegPacientePanel  extends javax.swing.JPanel {
+
+    public RegPacientePanel () {
         initComponents();
     }
 
@@ -142,40 +257,39 @@ public class reg_paciente extends javax.swing.JPanel {
                         .addComponent(txt_descuento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comb_tipoprecio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(comb_sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel13))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_quienref, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_direccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(89, 89, 89)
-                                    .addComponent(jLabel14)
-                                    .addGap(24, 24, 24)
-                                    .addComponent(jLabel15))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(36, 36, 36)
-                                    .addComponent(jLabel5))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(comb_sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_quienref, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_direccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addComponent(jLabel14)
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel5)))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_codaux)
@@ -267,9 +381,19 @@ public class reg_paciente extends javax.swing.JPanel {
 
         jButton5.setBackground(new java.awt.Color(204, 204, 204));
         jButton5.setText("SIGUIENTE");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(204, 204, 204));
         jButton6.setText("ANTERIOR");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -322,6 +446,14 @@ public class reg_paciente extends javax.swing.JPanel {
         //Activará las funciones respectivas para GUARDAR información en base de datos
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
