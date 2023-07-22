@@ -142,40 +142,39 @@ public class reg_paciente extends javax.swing.JPanel {
                         .addComponent(txt_descuento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comb_tipoprecio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(comb_sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel13))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_quienref, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_direccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(89, 89, 89)
-                                    .addComponent(jLabel14)
-                                    .addGap(24, 24, 24)
-                                    .addComponent(jLabel15))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(36, 36, 36)
-                                    .addComponent(jLabel5))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(comb_sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_quienref, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_direccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addComponent(jLabel14)
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel5)))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_codaux)
@@ -261,6 +260,11 @@ public class reg_paciente extends javax.swing.JPanel {
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
         jButton3.setText("MODIFICAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
         jButton4.setText("ELIMINAR");
@@ -322,6 +326,72 @@ public class reg_paciente extends javax.swing.JPanel {
         //Activará las funciones respectivas para GUARDAR información en base de datos
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    // este codigo podria funcionar con la conexion "conectar" 
+    //Connection con;
+
+    //try {
+    //    con = getConection();
+    //    ps = con.prepareStatement("UPDATE paciente SET clave=?, nombre=?, sexo=?, fnacimiento=?, telefono=?, nit=?, codigo_aux=?, direccion=?, muestra=?, result=?, refiere=?, descuento=?, tipo_precio=? WHERE id=?");
+    //    ps.setString(1, Integer.parseInt(txt_buscar.getText()));
+    //    ps.setString(2, txt_nombre.getText());
+    //    ps.setString(3, comb_sexo.getSelectedItem().toString());
+    //    ps.setString(4, txt_nacimiento.getSelectedItem().toString());
+    //    ps.setString(5, txt_telefono.getText());
+    //    ps.setDate(6, txt_nit.getText());
+    //    ps.setString(7, txt_codaux.getText());
+    //    ps.setString(8, txt_direccion.getText());
+    //    ps.setString(9, comb_tipomuestra.getSelectedItem().toString());
+    //    ps.setString(10, txt_fecharesult.getText());
+    //    ps.setString(11, txt_quienref.getText());   
+    //    ps.setString(12, txt_descuento.getText());
+    //    ps.setString(13, comb_tipoprecio.getSelectedItem().toString());  
+
+         
+             
+
+    //    int res = ps.executeUpdate();
+
+    //    if (res > 0) {
+    //        JOptionPane.showMessageDialog(null, "Persona Modificada");
+    //    } else {
+    //        JOptionPane.showMessageDialog(null, "Error al Modificar persona");
+    //   }
+    //   limpiarCajas();
+    //   con.close();
+
+    // } catch (HeadlessException | SQLException e) {
+    //    System.err.println(e);
+    // }
+    
+    
+    
+    //este es otro codigo que funciona pero con el conexion "LoginConnection" 
+    
+    
+       // PacienteDAO pacienteDAO = new PacienteDAO();
+       // Paciente pacienteAActualizar = new paciente();
+       // pacienteAActualizar.setId_paciente(Integer.parseInt(txt_buscar.getText()));
+       // pacienteAActualizar.setNombrePaciente(txt_nombre.getText());
+       // pacienteAActualizar.setsexoPaciente(comb_sexo.getSelectedItem().toString());
+       // pacienteAActualizar.setfechaNaciPaciente(txt_nacimiento.getSelectedItem().toString());
+       // pacienteAActualizar.settelefonoPaciente(txt_telefono.getText());
+       // pacienteAActualizar.setnitPaciente(txt_nit.getText());
+       // pacienteAActualizar.setCAuxiliarPaciente(txt_codaux.getText());
+       // pacienteAActualizar.setdireccionPaciente(txt_direccion.getText());
+       // pacienteAActualizar.setmuestraPaciente(comb_tipomuestra.getSelectedItem().toString());
+       // pacienteAActualizar.setfecharesulPaciente(txt_fecharesult.getText());
+       // pacienteAActualizar.setrefierePaciente(txt_quienref.getText());
+       // pacienteAActualizar.setdescuentoPaciente(txt_descuento.getText());
+       // pacienteAActualizar.settipoPaciente(comb_tipoprecio.getSelectedItem().toString());
+       // pacienteAActualizar.update(pacienteAActualizar);
+    
+    //este ultimo necesita dos clases pacienteDAO y paciente que son esenciales para que funcione.
+    
+    
+  
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
