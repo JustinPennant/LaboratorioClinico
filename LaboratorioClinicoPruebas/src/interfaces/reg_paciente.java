@@ -1,124 +1,9 @@
 
 package interfaces;
-import javax.swing.*;
-import java.awt.*;
-import java.sql.Connection;
-import interfaces.Paciente;
 
-
-
-//CONFIGURACION DEL BOTON ANTERIOR Y SIGUIENTE
-/***********************************************************/
-public class reg_paciente  extends JFrame {
-    private PacienteManager pacienteManager;
-
-    // Componentes de la interfaz gráfica
-    private JTextField txt_buscar;
-    private JTextField txt_nombre;
-    private JComboBox<String> comb_sexo;
-    private JTextField txt_nacimiento;
-    private JTextField txt_telefono;
-    private JTextField txt_nit;
-    private JTextField txt_codaux;
-    private JComboBox<String> comb_tipomuestra;
-    private JTextField txt_direccion;
-    private JTextField txt_quienref;
-    private JButton jButton5;
-    private JButton jButton6;
+public class reg_paciente extends javax.swing.JPanel {
 
     public reg_paciente() {
-          // Inicializa la conexión a la base de datos
-        Connection connection = obtenerConexionBD();
-
-        // Crea una instancia del PacienteManager pasando la conexión
-        pacienteManager = new PacienteManager(connection);
-        
-        // Configura los botones "Siguiente" y "Anterior" para manejar los eventos
-        jButton5.addActionListener(e -> siguientePaciente());
-        jButton6.addActionListener(e -> pacienteAnterior());
-        
-        // Muestra el primer paciente al iniciar
-        mostrarPacienteActual();
-    }
-        private void siguientePaciente() {
-        pacienteManager.siguientePaciente();
-        mostrarPacienteActual();
-    }
-
-    private void pacienteAnterior() {
-        pacienteManager.pacienteAnterior();
-        mostrarPacienteActual();
-    }
-
-    
-private void initComponents() {
-
-        // Configura el botón "Siguiente" para manejar el evento
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        // Configura el botón "Anterior" para manejar el evento
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-    }
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        pacienteManager.siguientePaciente();
-        mostrarPacienteActual();
-    }                                             
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        pacienteManager.pacienteAnterior();
-        mostrarPacienteActual();
-    }                                             
-
-    private void mostrarPacienteActual() {
-        Paciente paciente = pacienteManager.obtenerPacienteActual();
-        if (paciente != null) {
-            // Mostrar los datos en los cuadros de texto
-            txt_buscar.setText(String.valueOf(paciente.getExpediente()));
-            txt_nombre.setText(paciente.getNombre());
-            comb_sexo.setSelectedItem(paciente.getGenero());
-            txt_nacimiento.setText(paciente.getFechaNacimiento());
-            txt_telefono.setText(paciente.getTelefono());
-            txt_nit.setText(paciente.getNit());
-            txt_codaux.setText(paciente.getCodigoAuxiliar());
-            comb_tipomuestra.setSelectedItem(paciente.getTipoMuestra());
-            txt_direccion.setText(paciente.getDireccion());
-            txt_quienref.setText(paciente.getQuienRefiere());
-        }
-    }
-
-    // Método ficticio para obtener la conexión a la base de datos
-    private Connection obtenerConexionBD() {
-        // Aquí deberías implementar la lógica para obtener la conexión a la base de datos
-        // y devolverla como resultado. Este método es solo un ejemplo ficticio.
-        return null;
-    }
-
-    public static void main(String[] args) {
-        // Crea y muestra la interfaz gráfica
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new reg_paciente().setVisible(true);
-            }
-        });
-    }
-}
-/*****************************************************************************************/
-
-
-
-
-public class RegPacientePanel  extends javax.swing.JPanel {
-
-    public RegPacientePanel () {
         initComponents();
     }
 
@@ -375,25 +260,20 @@ public class RegPacientePanel  extends javax.swing.JPanel {
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
         jButton3.setText("MODIFICAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
         jButton4.setText("ELIMINAR");
 
         jButton5.setBackground(new java.awt.Color(204, 204, 204));
         jButton5.setText("SIGUIENTE");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jButton6.setBackground(new java.awt.Color(204, 204, 204));
         jButton6.setText("ANTERIOR");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -447,13 +327,71 @@ public class RegPacientePanel  extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-    
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    // este codigo podria funcionar con la conexion "conectar" 
+    //Connection con;
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    //try {
+    //    con = getConection();
+    //    ps = con.prepareStatement("UPDATE paciente SET clave=?, nombre=?, sexo=?, fnacimiento=?, telefono=?, nit=?, codigo_aux=?, direccion=?, muestra=?, result=?, refiere=?, descuento=?, tipo_precio=? WHERE id=?");
+    //    ps.setString(1, Integer.parseInt(txt_buscar.getText()));
+    //    ps.setString(2, txt_nombre.getText());
+    //    ps.setString(3, comb_sexo.getSelectedItem().toString());
+    //    ps.setString(4, txt_nacimiento.getSelectedItem().toString());
+    //    ps.setString(5, txt_telefono.getText());
+    //    ps.setDate(6, txt_nit.getText());
+    //    ps.setString(7, txt_codaux.getText());
+    //    ps.setString(8, txt_direccion.getText());
+    //    ps.setString(9, comb_tipomuestra.getSelectedItem().toString());
+    //    ps.setString(10, txt_fecharesult.getText());
+    //    ps.setString(11, txt_quienref.getText());   
+    //    ps.setString(12, txt_descuento.getText());
+    //    ps.setString(13, comb_tipoprecio.getSelectedItem().toString());  
+
+         
+             
+
+    //    int res = ps.executeUpdate();
+
+    //    if (res > 0) {
+    //        JOptionPane.showMessageDialog(null, "Persona Modificada");
+    //    } else {
+    //        JOptionPane.showMessageDialog(null, "Error al Modificar persona");
+    //   }
+    //   limpiarCajas();
+    //   con.close();
+
+    // } catch (HeadlessException | SQLException e) {
+    //    System.err.println(e);
+    // }
+    
+    
+    
+    //este es otro codigo que funciona pero con el conexion "LoginConnection" 
+    
+    
+       // PacienteDAO pacienteDAO = new PacienteDAO();
+       // Paciente pacienteAActualizar = new paciente();
+       // pacienteAActualizar.setId_paciente(Integer.parseInt(txt_buscar.getText()));
+       // pacienteAActualizar.setNombrePaciente(txt_nombre.getText());
+       // pacienteAActualizar.setsexoPaciente(comb_sexo.getSelectedItem().toString());
+       // pacienteAActualizar.setfechaNaciPaciente(txt_nacimiento.getSelectedItem().toString());
+       // pacienteAActualizar.settelefonoPaciente(txt_telefono.getText());
+       // pacienteAActualizar.setnitPaciente(txt_nit.getText());
+       // pacienteAActualizar.setCAuxiliarPaciente(txt_codaux.getText());
+       // pacienteAActualizar.setdireccionPaciente(txt_direccion.getText());
+       // pacienteAActualizar.setmuestraPaciente(comb_tipomuestra.getSelectedItem().toString());
+       // pacienteAActualizar.setfecharesulPaciente(txt_fecharesult.getText());
+       // pacienteAActualizar.setrefierePaciente(txt_quienref.getText());
+       // pacienteAActualizar.setdescuentoPaciente(txt_descuento.getText());
+       // pacienteAActualizar.settipoPaciente(comb_tipoprecio.getSelectedItem().toString());
+       // pacienteAActualizar.update(pacienteAActualizar);
+    
+    //este ultimo necesita dos clases pacienteDAO y paciente que son esenciales para que funcione.
+    
+    
+  
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

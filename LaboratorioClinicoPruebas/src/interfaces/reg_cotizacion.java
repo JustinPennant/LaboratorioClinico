@@ -78,7 +78,7 @@ public class reg_cotizacion extends javax.swing.JPanel {
         jLabel10.setText("Fecha:");
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField6.setText("00/00/0000");
+        jTextField6.setText("00-00-0000");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Número de Cotización:");
