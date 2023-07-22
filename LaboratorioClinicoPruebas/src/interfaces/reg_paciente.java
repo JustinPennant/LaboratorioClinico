@@ -1,12 +1,26 @@
 
 package interfaces;
 
+import clases.guardar_pacientes;
+
 public class reg_paciente extends javax.swing.JPanel {
 
+    private final guardar_pacientes GP;
+    
     public reg_paciente() {
         initComponents();
+        GP = new guardar_pacientes();
     }
 
+    String nombre_pa = "";
+    String sexo_pa = "";
+    String telefono_pa = "";
+    String nit_pa = "";
+    String direccion_pa = "";
+    String quienref_pa = "";
+    String cod_aux_pa = "";
+    String tipo_muestra_pa = "";
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -320,7 +334,16 @@ public class reg_paciente extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Activará las funciones respectivas para GUARDAR información en base de datos
+        nombre_pa = txt_nombre.getText();
+        sexo_pa = comb_sexo.getSelectedItem().toString();
+        telefono_pa = txt_telefono.getText();
+        nit_pa = txt_nit.getText();
+        direccion_pa = txt_direccion.getText();
+        quienref_pa = txt_quienref.getText();
+        cod_aux_pa = txt_codaux.getText();
+        tipo_muestra_pa = comb_tipomuestra.getSelectedItem().toString();
         
+        GP.insertDatos(nombre_pa, sexo_pa, telefono_pa, nit_pa, direccion_pa, quienref_pa, tipo_muestra_pa, cod_aux_pa, sexo_pa);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
