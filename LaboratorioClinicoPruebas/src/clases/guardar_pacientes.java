@@ -39,4 +39,12 @@ public class guardar_pacientes {
         }
         return 0;
     }
+
+    public void setInt(int i, int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int executeUpdate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
